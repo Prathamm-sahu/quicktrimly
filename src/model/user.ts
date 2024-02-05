@@ -5,7 +5,8 @@ export interface IUser {
   firstName: string
   lastName: string
   email: string
-  tinyURL: string[]
+  password: string
+  tinyURL?: string[]
   createdAt: Date
   updatedAt: Date
 }
@@ -26,6 +27,10 @@ const UserSchema = new mongoose.Schema(
       unique: true,
       trim: true,
     },
+    password: {
+      type: String,
+      required: true,
+    },
     tinyURL: [
       {
         type: Schema.Types.ObjectId,
@@ -38,6 +43,6 @@ const UserSchema = new mongoose.Schema(
   }
 );
 
-const User = mongoose.model<IUser>("User", UserSchema);
+const User = mongoose.models.users || mongoose.model<IUser>("users", UserSchema);
 
 export default User
