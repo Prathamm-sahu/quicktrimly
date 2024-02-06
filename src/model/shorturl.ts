@@ -1,5 +1,16 @@
 import mongoose from "mongoose";
 
+export interface IShortUrl {
+  _id?: string
+  shortUrl: string
+  originalURL: string
+  visits: {
+    timestamps: Date
+  }[]
+  createdAt: Date
+  updatedAt: Date
+}
+
 const ShortUrlSchema = new mongoose.Schema(
   {
     shortUrl: {
@@ -22,6 +33,6 @@ const ShortUrlSchema = new mongoose.Schema(
   }
 )
 
-const ShortUrl = mongoose.model("shorturl", ShortUrlSchema)
+const ShortUrl = mongoose.models.shorturl || mongoose.model<IShortUrl>("shorturl", ShortUrlSchema)
 
 export default ShortUrl;
