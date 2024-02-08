@@ -4,6 +4,8 @@ import connectDB from "@/config/db";
 import User, { IUser } from "@/model/user";
 import { NextResponse } from "next/server";
 
+const runtime = "nodejs"
+
 export async function POST(req: Request) {
   try {
     connectDB();

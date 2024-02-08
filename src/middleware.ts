@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
+const runtime = "nodejs"
 
 export async function middleware(request: NextRequest) {
   const token = request.headers.get("authorization");

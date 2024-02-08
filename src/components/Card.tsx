@@ -18,8 +18,12 @@ const Card: FC<CardProps> = ({}) => {
   const [shortUrl, setShortUrl] = useState("");
   const [visitCount, setVisitCount] = useState(0);
   const [cookies, _] = useCookies(["jwt"]);
-  const userId = localStorage.getItem("userID")
   const router = useRouter()
+
+  let userId: string | null = ""
+  if(typeof window !== "undefined") {
+    userId = localStorage?.getItem("userID")
+  }
 
   const validateUrl = () => {
     if (url.includes("http://") || url.includes("https://")) {
