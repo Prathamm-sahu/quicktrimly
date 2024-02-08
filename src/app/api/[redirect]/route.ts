@@ -10,7 +10,7 @@ export async function GET(
   try {
     connectDB();
     const shortUrlExists: IShortUrl | null = await ShortUrl.findOne({
-      shortUrl: `http://localhost:3000/api/${params.redirect}`,
+      shortUrl: `https://tinyurl-eight.vercel.app/api/${params.redirect}`,
     });
 
     if (!shortUrlExists) {

@@ -30,7 +30,7 @@ export async function POST(req: Request) {
     const shortId = shortid()
 
     const newShortUrl: IShortUrl | null = await ShortUrl.create({
-      shortUrl: `http://localhost:3000/api/${shortId}`,
+      shortUrl: `https://tinyurl-eight.vercel.app/api/${shortId}`,
       originalURL: url,
       visits: [],
       user: userId
