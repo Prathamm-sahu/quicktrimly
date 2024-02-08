@@ -6,7 +6,8 @@ export interface IShortUrl {
   originalURL: string
   visits: {
     timestamps: Date
-  }[]
+  }[],
+  user: string
   createdAt: Date
   updatedAt: Date
 }
@@ -26,7 +27,11 @@ const ShortUrlSchema = new mongoose.Schema(
       timestamps: {
         type: Date
       }
-    }]
+    }],
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
   }, 
   {
     timestamps: true
