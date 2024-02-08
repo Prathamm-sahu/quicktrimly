@@ -6,10 +6,10 @@ export async function GET(req: NextRequest) {
   try {
     connectDB();
     const searchParams = req.nextUrl.searchParams;
-    const urlId = searchParams.get("urlId")
+    const shortUrl = searchParams.get("miniUrl")
 
     const urlExits: IShortUrl | null = await ShortUrl.findOne({
-      shortUrl: `http://localhost:3000/api/${urlId}`,
+      shortUrl,
     });
 
     if (!urlExits) {
@@ -19,7 +19,10 @@ export async function GET(req: NextRequest) {
     const visitsCount = urlExits.visits.length;
 
     return NextResponse.json({
+      id: urlExits._id,
       totalVisitsCount: visitsCount,
+      originalUrl: urlExits.originalURL,
+      createdAt: urlExits.createdAt
     });
   } catch (error: any) {
     return NextResponse.json({

@@ -10,7 +10,7 @@ export async function POST(req: Request) {
   try {
     connectDB();
     const body = await req.json();
-    const { url } = body;
+    const { url, userId } = body;
 
     const urlExists: IShortUrl | null = await ShortUrl.findOne({
       originalURL: url,
@@ -33,6 +33,7 @@ export async function POST(req: Request) {
       shortUrl: `http://localhost:3000/api/${shortId}`,
       originalURL: url,
       visits: [],
+      user: userId
     })
 
     return NextResponse.json({
