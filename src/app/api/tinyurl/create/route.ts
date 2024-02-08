@@ -15,7 +15,6 @@ export async function POST(req: Request) {
     const urlExists: IShortUrl | null = await ShortUrl.findOne({
       originalURL: url,
     });
-    console.log(urlExists);
 
     // If tinyUrl already exists then return it.
     if (urlExists) {

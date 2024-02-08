@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 async function getData(): Promise<Dashboard[]> {
   // Fetch data from API here.
   const userId = localStorage.getItem("userID")
-  const { data } = await axios.get(`/api/tinyurl/getAllUrls?userId=${userId}`)
+  const { data } = await axios.post(`/api/tinyurl/getAllUrls`, { userId })
   
   return data.allUrl;
 }

@@ -38,8 +38,10 @@ const Card: FC<CardProps> = ({}) => {
       return;
     }
     try {
-      const { data } = await axios.get(
-        `/api/tinyurl/analytics?miniUrl=${shortUrl}`
+      const { data } = await axios.post(
+        `/api/tinyurl/analytics`, {
+          shortUrl
+        }
       );
       setVisitCount(data.totalVisitsCount);
     } catch (error) {

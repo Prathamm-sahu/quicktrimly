@@ -2,11 +2,11 @@ import connectDB from "@/config/db";
 import ShortUrl, { IShortUrl } from "@/model/shorturl";
 import { type NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
+export async function POST(req: Request) {
   try {
     connectDB();
-    const searchParams = req.nextUrl.searchParams;
-    const shortUrl = searchParams.get("miniUrl")
+    const body = await req.json()
+    const { shortUrl } = body
 
     const urlExits: IShortUrl | null = await ShortUrl.findOne({
       shortUrl,
