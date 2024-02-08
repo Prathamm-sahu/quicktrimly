@@ -76,6 +76,11 @@ const Card: FC<CardProps> = ({}) => {
     }
   };
 
+  const copyPasswordToClipBoard = () => {
+    window.navigator.clipboard.writeText(shortUrl)
+    toast.success("URL copied to clip board")
+  }
+
   return (
     <div className="container bg-zinc-300 rounded-lg max-w-2xl min-h-52 gap-y-4 space-y-1.5 shadow-xl border-zinc-300">
       <h1 className="text-4xl font-bold pt-7">Shorten a long URL</h1>
@@ -98,7 +103,7 @@ const Card: FC<CardProps> = ({}) => {
         <div className="p-2">
           <div className="flex items-center space-x-4">
             <p className="font-bold text-zinc-700">Short URL: {shortUrl}</p>
-            <Button>
+            <Button onClick={copyPasswordToClipBoard}>
               <Copy className="h-4 w-4 mr-2" />
               Copy
             </Button>
