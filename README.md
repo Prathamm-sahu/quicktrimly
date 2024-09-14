@@ -1,8 +1,8 @@
-# Tiny Url
+# Quick Trimly
 
 ## Description
 
-Tiny Url is a URL shortening service. It provides short aliases redirecting to long URLs.
+Quick Trimly is a URL shortening service. It provides short aliases redirecting to long URLs.
 Project is hosted on - https://tinyurl-eight.vercel.app
 
 ## Features
